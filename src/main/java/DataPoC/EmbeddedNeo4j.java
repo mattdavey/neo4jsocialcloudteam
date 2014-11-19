@@ -1,17 +1,14 @@
+package DataPoC;
+
+import org.neo4j.graphdb.*;
+import org.neo4j.graphdb.factory.GraphDatabaseFactory;
+import org.neo4j.graphdb.traversal.Evaluators;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.neo4j.graphdb.Direction;
-import org.neo4j.graphdb.GraphDatabaseService;
-import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.Relationship;
-import org.neo4j.graphdb.RelationshipType;
-import org.neo4j.graphdb.Transaction;
-import org.neo4j.graphdb.factory.GraphDatabaseFactory;
-import org.neo4j.graphdb.traversal.Evaluators;
 
 public class EmbeddedNeo4j
 {
@@ -31,23 +28,26 @@ public class EmbeddedNeo4j
 
     public static void main( final String[] args )
     {
-        EmbeddedNeo4j hello = new EmbeddedNeo4j();
+        final EmbeddedNeo4j hello = new EmbeddedNeo4j();
         hello.createDb();
+
         final Node team = hello.createTeam();
         System.out.println(hello.knowsLikesTraverser(team));
         System.out.println("Press any key to stop");
+
         try {
             System.in.read();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         hello.removeData();
         hello.shutDown();
     }
 
     String knowsLikesTraverser( Node node )
     {
-        try ( Transaction tx = graphDb.beginTx() ) {
+        try ( final Transaction tx = graphDb.beginTx() ) {
             String output = "";
             // START SNIPPET: knowslikestraverser
             for (org.neo4j.graphdb.Path position : graphDb.traversalDescription()
@@ -72,7 +72,7 @@ public class EmbeddedNeo4j
         try ( Transaction tx = graphDb.beginTx() )
         {
             final Node team = graphDb.createNode();
-            team.setProperty("name", "Team");
+            team.setProperty("name", "ProjectTeamModelling.services.domain.Team");
 
             final List<Node> nodes = new ArrayList<>();
             final List<String> teamMembers = Arrays.asList("Bob", "Fred", "Elvis", "Nicola");

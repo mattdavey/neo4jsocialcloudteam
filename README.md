@@ -1,4 +1,4 @@
 neo4jsocialcloudteam
 ====================
 
-Neo4j Social Cloud Team
+Neo4j Social Cloud ProjectTeamModelling.services.domain.Team
