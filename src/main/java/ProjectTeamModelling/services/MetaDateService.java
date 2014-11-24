@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class MetaDateService {
     class ComponetStore {
-        HashMap<String, ComponetStore> storage = new HashMap<>();
+        final HashMap<String, ComponetStore> storage = new HashMap<>();
     }
 
     final private ComponetStore rootStorage = new ComponetStore();
@@ -24,7 +24,7 @@ public class MetaDateService {
         }
     }
 
-    public boolean validateMetaData(final String metadataPath) {
+    public boolean validMetaData(final String metadataPath) {
         final String[] pathComponents = metadataPath.split("//");
 
         ComponetStore parent = rootStorage;

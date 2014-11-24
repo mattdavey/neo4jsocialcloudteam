@@ -1,4 +1,4 @@
-package ProjectTeamModelling.services;
+package DataPoC;
 
 import ProjectTeamModelling.domain.Team;
 import org.neo4j.graphdb.GraphDatabaseService;

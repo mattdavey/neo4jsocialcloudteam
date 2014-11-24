@@ -1,8 +1,10 @@
 package ProjectTeamModelling.domain;
 
+import java.util.HashMap;
+
 public class Team {
     private String name;
-    private String description;
+    private HashMap<String, Person> people = new HashMap<>();
 
     public Team(final String name) {
         setName(name);
@@ -13,11 +15,13 @@ public class Team {
         this.name = name;
     }
 
-    public void setDescription(final String description) {
-        this.description = description;
+    public void addPerson(final Person fred) {
+        people.put(fred.getName(), fred);
     }
 
-    public void addRole(final Role role) {
-
+    public void addPersons(final Person[] persons) {
+        for (final Person person : persons) {
+            addPerson(person);
+        }
     }
 }

@@ -1,8 +1,6 @@
 package ProjectTeamModelling.domain;
 
-;
-
-public class Person {
+public class Person extends SupplyResource {
     final private String name;
     final private String department;
     private String title;
@@ -25,5 +23,9 @@ public class Person {
 
     public void addRelationship(final Person person, final PersonRelationship relationship) {
 
+    }
+
+    public String getName() {
+        return name;
     }
 }
